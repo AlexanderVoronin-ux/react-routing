@@ -1,25 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {Link, Route, Switch} from "react-router-dom";
+import Category from './Category'
+import {Button} from "@mui/material";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const Home = (props) => {
+    console.log(props);
+    return (
+        <div>
+            <h2>Home</h2>
+        </div>
+    );
 }
+const Products = () => (
+    <div>
+        <h2>Products</h2>
+    </div>
+);
+const Contacts = () => (
+    <div>
+        <h2>Contacts</h2>
+    </div>
+);
 
-export default App;
+export default function App() {
+    return (
+        <div>
+            <nav>
+                <ul>
+                    <li>
+                        <Button variant="contained" disableElevation>
+                        <Link to="/">Home</Link>
+                        </Button>
+                    </li>
+                    <li>
+                        <Button variant="contained" disableElevation>
+                        <Link to="/category">Category</Link>
+                        </Button>
+                    </li>
+                    <li>
+                        <Button variant="contained" disableElevation>
+                        <Link to="/products">Products</Link>
+                        </Button>
+                    </li>
+                    <li>
+                        <Button variant="contained" disableElevation>
+                        <Link to="/contacts">Contacts</Link>
+                        </Button>
+                    </li>
+                </ul>
+            </nav>
+<Switch>
+    <Route exact path="/"><Home /></Route>
+    <Route path="/category"><Category /></Route>
+    <Route path="/products"><Products /></Route>
+    <Route path="/contacts"><Contacts /></Route>
+    <Route path="/:id">
+        <p>Отображаемый текст по id при динамической  маршрутизации</p>
+    </Route>
+
+</Switch>
+        </div>
+    );
+}
