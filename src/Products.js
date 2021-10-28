@@ -7,7 +7,6 @@ const Products = ({ match }) => {
     // const productData = [];
     const { url } = useRouteMatch();
 
-    /* Create an array of `<li>` items for each product */
     const linkList = productData.map((product) => {
         return (
             <li key={product.id}>

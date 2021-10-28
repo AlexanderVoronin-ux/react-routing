@@ -2,6 +2,9 @@ import React from "react";
 import {Link, Route, Switch} from "react-router-dom";
 import Category from './Category';
 import Products from "./Products";
+import {Contacts} from './Contacts'
+import Login from "./Login";
+import PrivateRoute from "./PrivateRoute";
 import {Button} from "@mui/material";
 
 const Home = (props) => {
@@ -12,11 +15,7 @@ const Home = (props) => {
         </div>
     );
 }
-const Contacts = () => (
-    <div>
-        <h2>Contacts</h2>
-    </div>
-);
+
 
 export default function App() {
     return (
@@ -47,12 +46,10 @@ export default function App() {
             </nav>
 <Switch>
     <Route exact path="/"><Home /></Route>
-    <Route path="/category"><Category /></Route>
-    <Route path="/products"><Products /></Route>
-    <Route path="/contacts"><Contacts /></Route>
-    <Route path="/:id">
-        <p>Отображаемый текст по id при динамической  маршрутизации</p>
-    </Route>
+    <Route path="/login"><Login /></Route>
+    <PrivateRoute path="/category" component={Category}/>
+    <PrivateRoute path="/products" component={Products}/>
+    <PrivateRoute path="/contacts" component={Contacts}/>
 
 </Switch>
         </div>
