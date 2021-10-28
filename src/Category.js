@@ -2,6 +2,10 @@ import React from "react";
 import {Link, Route, useParams, useRouteMatch} from "react-router-dom";
 import {Button} from "@mui/material";
 
+
+
+
+
 const Item = () => {
     const { name } = useParams();
 
@@ -19,18 +23,18 @@ const Category = () => {
         <div>
             <ul>
                 <li>
-                    <Button variant="contained" disableElevation>
+                        <Button variant="contained" color="success">
                         <Link to={`${url}/shoes`}>Shoes</Link>
-                    </Button>
+                        </Button>
 
                 </li>
                 <li>
-                    <Button variant="contained" disableElevation>
+                    <Button variant="contained" color="secondary">
                        <Link to={`${url}/boots`}>Boots</Link>
                     </Button>
                 </li>
                 <li>
-                    <Button variant="contained" disableElevation>
+                    <Button variant="contained" color="warning">
                        <Link to={`${url}/footwear`}>Footwear</Link>
                    </Button>
                 </li>

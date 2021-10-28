@@ -1,6 +1,7 @@
 import React from "react";
 import {Link, Route, Switch} from "react-router-dom";
-import Category from './Category'
+import Category from './Category';
+import Products from "./Products";
 import {Button} from "@mui/material";
 
 const Home = (props) => {
@@ -11,11 +12,6 @@ const Home = (props) => {
         </div>
     );
 }
-const Products = () => (
-    <div>
-        <h2>Products</h2>
-    </div>
-);
 const Contacts = () => (
     <div>
         <h2>Contacts</h2>
@@ -24,8 +20,8 @@ const Contacts = () => (
 
 export default function App() {
     return (
-        <div>
-            <nav>
+        <div className="header">
+            <nav className="navbar">
                 <ul>
                     <li>
                         <Button variant="contained" disableElevation>
