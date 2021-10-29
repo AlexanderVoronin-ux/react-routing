@@ -6,6 +6,8 @@ import {Contacts} from './Contacts'
 import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";
 import {Button} from "@mui/material";
+import Logout from "./Logout";
+import PublicRoute from "./PublicRoute";
 
 const Home = (props) => {
     console.log(props);
@@ -44,14 +46,14 @@ export default function App() {
                     </li>
                 </ul>
             </nav>
-<Switch>
-    <Route exact path="/"><Home /></Route>
-    <Route path="/login"><Login /></Route>
-    <PrivateRoute path="/category" component={Category}/>
-    <PrivateRoute path="/products" component={Products}/>
-    <PrivateRoute path="/contacts" component={Contacts}/>
+            <Switch>
+                <Route exact path="/" component={Home}/>
+                <PublicRoute path="/login" component={Login} />
+                <PrivateRoute path="/category" component={Category}/>
+                <PrivateRoute path="/products" component={Products}/>
+                <PrivateRoute path="/contacts" component={Contacts}/>
 
-</Switch>
+            </Switch>
         </div>
     );
 }

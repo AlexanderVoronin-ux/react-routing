@@ -2,16 +2,16 @@ import React, {useState} from "react";
 import { Redirect, useLocation} from "react-router-dom";
 import {Button} from "@mui/material";
 
-export default function Login() {
+export default function Logout() {
     const { state } = useLocation();
     const { from } = state || { from: { pathname: "/" } };
-    const [redirectToReferrer, setRedirectToReferrer] = useState(false);
+    const [redirectToReferrer, setRedirectToReferrer] = useState(true);
 
-    const login = () => {
-        // localStorage.setItem('hasAuth', true)
+    const logout = () => {
+        // localStorage.setItem('hasAuth', false)
 
         fakeAuth.authenticate(() => {
-            setRedirectToReferrer(true);
+            setRedirectToReferrer(false);
         });
     };
 
@@ -20,9 +20,9 @@ export default function Login() {
     }
 
     return (
-        <div className='login'>
-            <p>You must log in to view the page {from.pathname}</p>
-            <Button variant="contained" color="success" onClick={login}>Log in</Button>
+        <div className='logout'>
+            <p>You can log out</p>
+            <Button variant="contained" color="success" onClick={logout}>Log out</Button>
 
         </div>
     );
@@ -30,9 +30,9 @@ export default function Login() {
 
 /* A fake authentication function */
 export const fakeAuth = {
-    isAuthenticated: false,
+    isAuthenticated: true,
     authenticate(cb) {
-        this.isAuthenticated = true;
+        this.isAuthenticated = false;
         setTimeout(cb, 100);
     }
 };

@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect, Route, useLocation} from "react-router-dom";
 import {fakeAuth} from "./Login";
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PublicRoute = ({ component: Component, ...rest }) => {
     const location = useLocation();
 
     // const hasAuth = !!localStorage.getItem('hasAuth') || fakeAuth.isAuthenticated
@@ -11,11 +11,11 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     return (
         <Route {...rest}>
             {hasAuth === true
-                ? <Component />
-                : <Redirect to={{ pathname: "/login", state: { from: location } }} />
+                ? <Redirect to={{ pathname: "/logout", state: { from: location } }} />
+                : <Component />
             }
         </Route>
     );
 };
 
-export default PrivateRoute;
+export default PublicRoute;
