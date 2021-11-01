@@ -1,23 +1,15 @@
 import React, {useState} from "react";
 import { Redirect, useLocation} from "react-router-dom";
 import {Button} from "@mui/material";
+import {fakeAuth} from "./Login";
 
 export default function Logout() {
-    const { state } = useLocation();
-    const { from } = state || { from: { pathname: "/" } };
-    const [redirectToReferrer, setRedirectToReferrer] = useState(true);
-
     const logout = () => {
-        // localStorage.setItem('hasAuth', false)
+        localStorage.removeItem('hasAuth')
 
-        fakeAuth.authenticate(() => {
-            setRedirectToReferrer(false);
-        });
+        fakeAuth.logout()
+
     };
-
-    if (redirectToReferrer) {
-        return <Redirect to={from} />;
-    }
 
     return (
         <div className='logout'>
@@ -27,12 +19,3 @@ export default function Logout() {
         </div>
     );
 }
-
-/* A fake authentication function */
-export const fakeAuth = {
-    isAuthenticated: true,
-    authenticate(cb) {
-        this.isAuthenticated = false;
-        setTimeout(cb, 100);
-    }
-};

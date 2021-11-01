@@ -44,11 +44,22 @@ export default function App() {
                         <Link to="/contacts">Contacts</Link>
                         </Button>
                     </li>
+                    <li>
+                        <Button variant="contained" disableElevation>
+                        <Link to="/login">Login</Link>
+                        </Button>
+                    </li>
+                    <li>
+                        <Button variant="contained" disableElevation>
+                        <Link to="/logout">Logout</Link>
+                        </Button>
+                    </li>
                 </ul>
             </nav>
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <PublicRoute path="/login" component={Login} />
+                <PrivateRoute path="/logout" component={Logout}/>
                 <PrivateRoute path="/category" component={Category}/>
                 <PrivateRoute path="/products" component={Products}/>
                 <PrivateRoute path="/contacts" component={Contacts}/>

@@ -8,7 +8,7 @@ export default function Login() {
     const [redirectToReferrer, setRedirectToReferrer] = useState(false);
 
     const login = () => {
-        // localStorage.setItem('hasAuth', true)
+        localStorage.setItem('hasAuth', true)
 
         fakeAuth.authenticate(() => {
             setRedirectToReferrer(true);
@@ -34,5 +34,11 @@ export const fakeAuth = {
     authenticate(cb) {
         this.isAuthenticated = true;
         setTimeout(cb, 100);
+    },
+    logout(cb) {
+        this.isAuthenticated = false;
+        if(cb) {
+            setTimeout(cb, 100);
+        }
     }
 };

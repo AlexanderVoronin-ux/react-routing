@@ -5,8 +5,7 @@ import {fakeAuth} from "./Login";
 const PrivateRoute = ({ component: Component, ...rest }) => {
     const location = useLocation();
 
-    // const hasAuth = !!localStorage.getItem('hasAuth') || fakeAuth.isAuthenticated
-    const hasAuth = fakeAuth.isAuthenticated
+    const hasAuth = !!localStorage.getItem('hasAuth') || fakeAuth.isAuthenticated
 
     return (
         <Route {...rest}>
